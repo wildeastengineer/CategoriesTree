@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import CategoryItem from './CategoryItem';
-import AddCategoryForm from './AddCategoryForm';
+import { AddCategoryForm, CategoryList } from '../CategoriesTree';
 
 class CategoriesTree extends Component {
     constructor(props) {
@@ -45,38 +44,34 @@ class CategoriesTree extends Component {
     }
 
     handleNameChange(categoryId, name) {
-        console.info('handleNameChange', categoryId, name);
+        console.info('handleNameChange');
+        console.log('categoryId', categoryId);
+        console.log('name', name);
     }
 
     handleRemoveClick(categoryId) {
-        console.info('handleRemoveClick', categoryId);
+        console.info('handleRemoveClick');
+        console.log('categoryId', categoryId);
     }
 
     handleAddClick(parentId, name) {
-        console.info('handleAddClick', parentId, name);
+        console.info('handleAddClick');
+        console.log('parentId', parentId);
+        console.log('name', name);
     }
 
     render() {
         return (
             <div>
-                <div>
-                    <AddCategoryForm
-                        onAddClick={this.handleAddClick}
-                    />
-                </div>
-                <div>
-                    <ul>
-                        {this.state.categories.map((category) => (
-                            <CategoryItem
-                                key={category.id}
-                                {...category}
-                                onNameChange={this.handleNameChange}
-                                onRemoveClick={this.handleRemoveClick}
-                                onAddClick={this.handleAddClick}
-                            />
-                        ))}
-                    </ul>
-                </div>
+                <AddCategoryForm
+                    onAddClick={this.handleAddClick}
+                />
+                <CategoryList
+                    categories={this.state.categories}
+                    onNameChange={this.handleNameChange}
+                    onRemoveClick={this.handleRemoveClick}
+                    onAddClick={this.handleAddClick}
+                />
             </div>
         );
     }

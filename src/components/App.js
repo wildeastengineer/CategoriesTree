@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import CategoriesTree from './CategoriesTree';
+import React, { Component } from 'react';
+import { CategoriesTree } from './CategoriesTree';
 // Styles
 import './App.css';
 
