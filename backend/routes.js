@@ -18,7 +18,10 @@ module.exports = function (app, router) {
         if (editedCategory) {
             res.json(editedCategory);
         } else {
-            next('No category with id=' + req.params.id);
+            next({
+                status: 404,
+                message: 'No category with id=' + req.params.id
+            });
         }
     });
 
@@ -28,7 +31,10 @@ module.exports = function (app, router) {
         if (removedCategory) {
             res.json(removedCategory);
         } else {
-            next('No category with id=' + req.params.id);
+            next({
+                status: 404,
+                message: 'No category with id=' + req.params.id
+            });
         }
     });
 };
