@@ -1,5 +1,15 @@
 import React, { Component, PropTypes } from 'react';
-import { CategoryList, EditCategoryForm, DisplayCategoryForm } from '../CategoriesTree';
+import { connect } from 'react-redux';
+import {
+    editCategory,
+    addCategory,
+    removeCategory
+} from '../../store/actions';
+import {
+    CategoryList,
+    EditCategoryForm,
+    DisplayCategoryForm
+} from '../CategoriesTree';
 
 const propTypes = {
     id: PropTypes.string.isRequired,
@@ -7,7 +17,7 @@ const propTypes = {
     children: PropTypes.array,
     onNameChange: PropTypes.func,
     onRemoveClick: PropTypes.func,
-    onAddClick: PropTypes.func,
+    onAddClick: PropTypes.func
 };
 
 class CategoryItem extends Component {
@@ -20,7 +30,6 @@ class CategoryItem extends Component {
 
         this.handleEditButtonClick = this.handleEditButtonClick.bind(this);
         this.handleSaveButtonClick = this.handleSaveButtonClick.bind(this);
-        this.handleCancelButtonClick = this.handleCancelButtonClick.bind(this);
     }
 
     handleEditButtonClick() {
@@ -57,15 +66,12 @@ class CategoryItem extends Component {
                             name={this.props.name}
                             onEditClick={this.handleEditButtonClick}
                             onRemoveClick={this.props.onRemoveClick.bind(null, this.props.id)}
-                            onAddClick={this.props.onAddClick.bind(null, this.props.id, null)}
+                            onAddClick={this.props.onAddClick.bind(null, null, this.props.id)}
                         />
                     )}
                 {this.props.children && (
                     <CategoryList
                         categories={this.props.children}
-                        onNameChange={this.props.onNameChange}
-                        onRemoveClick={this.props.onRemoveClick}
-                        onAddClick={this.props.onAddClick}
                     />
                 )}
             </li>
@@ -75,4 +81,22 @@ class CategoryItem extends Component {
 
 CategoryItem.propTypes = propTypes;
 
-export default CategoryItem;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onNameChange: (id, newName) => {
+            dispatch(editCategory(id, newName))
+        },
+        onRemoveClick: (id) => {
+            dispatch(removeCategory(id))
+        },
+        onAddClick: (name, parent) => {
+            dispatch(addCategory(name, parent))
+        },
+    };
+};
+
+export default connect(
+    () => ({}),
+    mapDispatchToProps
+)(CategoryItem);
+

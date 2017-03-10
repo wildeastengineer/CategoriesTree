@@ -7,9 +7,6 @@ const CategoryList = (props) => (
             <CategoryItem
                 key={category.id}
                 {...category}
-                onNameChange={props.onNameChange}
-                onRemoveClick={props.onRemoveClick}
-                onAddClick={props.onAddClick}
             />
         ))}
     </ul>

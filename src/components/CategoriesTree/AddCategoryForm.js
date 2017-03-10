@@ -1,10 +1,12 @@
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { addCategory } from '../../store/actions';
 
 const propTypes = {
     onAddClick: PropTypes.func
 };
 
-class CategoryItem extends Component {
+class AddCategoryForm extends Component {
     constructor(props) {
         super(props);
 
@@ -23,7 +25,7 @@ class CategoryItem extends Component {
     }
 
     handleAddClick() {
-        this.props.onAddClick(null, this.state.name);
+        this.props.onAddClick(this.state.name, null);
 
         this.setState({
             name: ''
@@ -48,6 +50,17 @@ class CategoryItem extends Component {
     }
 }
 
-CategoryItem.propTypes = propTypes;
+AddCategoryForm.propTypes = propTypes;
 
-export default CategoryItem;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onAddClick: (name, parent) => {
+            dispatch(addCategory(name, parent))
+        }
+    };
+};
+
+export default connect(
+    () => ({}),
+    mapDispatchToProps
+)(AddCategoryForm);

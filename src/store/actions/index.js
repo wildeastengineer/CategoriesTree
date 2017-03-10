@@ -1,0 +1,46 @@
+import {
+    UPDATE_CATEGORIES_LIST_STARTED,
+    UPDATE_CATEGORIES_LIST_FINISHED,
+    UPDATE_CATEGORIES_LIST_FAILED,
+    updateCategoriesList
+} from './updateCategoriesListActions';
+
+import {
+    ADD_CATEGORY_STARTED,
+    ADD_CATEGORY_FINISHED,
+    ADD_CATEGORY_FAILED,
+    addCategory
+} from './addCategoryActions';
+
+import {
+    EDIT_CATEGORY_STARTED,
+    EDIT_CATEGORY_FINISHED,
+    EDIT_CATEGORY_FAILED,
+    editCategory
+} from './editCategoryActions';
+
+import {
+    REMOVE_CATEGORY_STARTED,
+    REMOVE_CATEGORY_FINISHED,
+    REMOVE_CATEGORY_FAILED,
+    removeCategory
+} from './removeCategoryActions';
+
+export {
+    UPDATE_CATEGORIES_LIST_STARTED,
+    UPDATE_CATEGORIES_LIST_FINISHED,
+    UPDATE_CATEGORIES_LIST_FAILED,
+    updateCategoriesList,
+    ADD_CATEGORY_STARTED,
+    ADD_CATEGORY_FINISHED,
+    ADD_CATEGORY_FAILED,
+    addCategory,
+    EDIT_CATEGORY_STARTED,
+    EDIT_CATEGORY_FINISHED,
+    EDIT_CATEGORY_FAILED,
+    editCategory,
+    REMOVE_CATEGORY_STARTED,
+    REMOVE_CATEGORY_FINISHED,
+    REMOVE_CATEGORY_FAILED,
+    removeCategory
+}
