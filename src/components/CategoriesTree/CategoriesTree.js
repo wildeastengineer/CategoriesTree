@@ -1,80 +1,94 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { updateCategoriesList } from '../../store/actions';
 import { AddCategoryForm, CategoryList } from '../CategoriesTree';
 
+const propTypes = {
+    updateCategoriesList: PropTypes.func.isRequired
+};
+
 class CategoriesTree extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            categories: [
-                {
-                    id: '100',
-                    name: 'Category 1'
-                },
-                {
-                    id: '200',
-                    name: 'Category 2',
-                    children: [
-                        {
-                            id: '210',
-                            name: 'Category 2 1'
-                        },
-                        {
-                            id: '220',
-                            name: 'Category 2 2',
-                            children: [
-                                {
-                                    id: '221',
-                                    name: 'Category 2 2 1'
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    id: '300',
-                    name: 'Category 3'
-                }
-            ]
-        };
-
-        this.handleNameChange = this.handleNameChange.bind(this);
-        this.handleRemoveClick = this.handleRemoveClick.bind(this);
-        this.handleAddClick = this.handleAddClick.bind(this);
-    }
-
-    handleNameChange(categoryId, name) {
-        console.info('handleNameChange');
-        console.log('categoryId', categoryId);
-        console.log('name', name);
-    }
-
-    handleRemoveClick(categoryId) {
-        console.info('handleRemoveClick');
-        console.log('categoryId', categoryId);
-    }
-
-    handleAddClick(parentId, name) {
-        console.info('handleAddClick');
-        console.log('parentId', parentId);
-        console.log('name', name);
+    componentDidMount() {
+        this.props.updateCategoriesList();
     }
 
     render() {
         return (
             <div>
-                <AddCategoryForm
-                    onAddClick={this.handleAddClick}
-                />
+                <AddCategoryForm/>
                 <CategoryList
-                    categories={this.state.categories}
-                    onNameChange={this.handleNameChange}
-                    onRemoveClick={this.handleRemoveClick}
-                    onAddClick={this.handleAddClick}
+                    categories={this.props.categories}
                 />
             </div>
         );
     }
 }
 
-export default CategoriesTree;
+CategoriesTree.propTypes = propTypes;
+
+const mapStateToProps = (state) => {
+    //const categories = makeTree(state.categories.data);
+
+    const data = state.categories.data;
+    const categories = [];
+
+    for (const categoryId in data) {
+        if (!data.hasOwnProperty(categoryId)) {
+            continue;
+        }
+
+        categories.push(data[categoryId]);
+    }
+
+    console.warn('fix it');
+
+    return {
+        categories
+    };
+
+    function makeTree(data) {
+        const result = [];
+        const queue = [ null ];
+
+        while (queue.length) {
+            const currentParentId = queue.shift();
+            let currentParent;
+
+            if (currentParentId === null) {
+                currentParent = result;
+            } else {
+                currentParent = data[currentParentId];
+                currentParent.children = currentParent.children || [];
+                currentParent = currentParent.children;
+            }
+
+            for (const categoryId in data) {
+                if (!data.hasOwnProperty(categoryId)) {
+                    continue;
+                }
+
+                const category = data[categoryId];
+
+                if (category.parent === currentParentId) {
+                    currentParent.push(category);
+                    queue.push(category.id);
+                }
+            }
+        }
+
+        return result;
+    }
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        updateCategoriesList: () => {
+            dispatch(updateCategoriesList())
+        }
+    };
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(CategoriesTree);
