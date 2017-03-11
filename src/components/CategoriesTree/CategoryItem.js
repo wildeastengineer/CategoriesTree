@@ -30,6 +30,7 @@ class CategoryItem extends Component {
 
         this.handleEditButtonClick = this.handleEditButtonClick.bind(this);
         this.handleSaveButtonClick = this.handleSaveButtonClick.bind(this);
+        this.handleCancelButtonClick = this.handleCancelButtonClick.bind(this);
     }
 
     handleEditButtonClick() {
@@ -81,6 +82,26 @@ class CategoryItem extends Component {
 
 CategoryItem.propTypes = propTypes;
 
+const mapStateToProps = (state, ownProps) => {
+    const children = [];
+
+    for (const id in state.categories.data) {
+        if (!state.categories.data.hasOwnProperty(id)) {
+            continue;
+        }
+
+        const category = state.categories.data[id];
+
+        if (category.parent === ownProps.id) {
+            children.push(category);
+        }
+    }
+
+    return {
+        children
+    };
+};
+
 const mapDispatchToProps = (dispatch) => {
     return {
         onNameChange: (id, newName) => {
@@ -96,7 +117,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(
-    () => ({}),
+    mapStateToProps,
     mapDispatchToProps
 )(CategoryItem);
 
