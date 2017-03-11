@@ -7,6 +7,14 @@ var errorHandler = require('./errorHandler');
 
 app.use(bodyParser());
 
+app.use(function (req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'access-control-allow-origin, content-type');
+    res.setHeader('Access-Control-Allow-Credentials', false);
+    next();
+});
+
 registerRoutes(app, express.Router());
 
 app.use(errorHandler);
