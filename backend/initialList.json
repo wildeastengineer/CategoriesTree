@@ -1,0 +1,52 @@
+[
+    {
+        "id": "b5a0c5c2-47e4-4492-0bdf-36a9f6a47dfb",
+        "name": "Category 1",
+        "parent": null
+    },
+    {
+        "id": "cdf9968d-47d2-5875-33f0-1aa52d5bf212",
+        "name": "Category 2",
+        "parent": null
+    },
+    {
+        "id": "6922dd12-91dd-65ae-1ad3-c35a74d8a510",
+        "name": "Category 3",
+        "parent": null
+    },
+    {
+        "id": "042a156a-4b25-3d3c-74dd-b72c97288007",
+        "name": "Category 4",
+        "parent": null
+    },
+    {
+        "id": "b5ce6f62-1f5e-6a73-fbed-c3f8790b24eb",
+        "name": "Category 1 - 1",
+        "parent": "b5a0c5c2-47e4-4492-0bdf-36a9f6a47dfb"
+    },
+    {
+        "id": "8ad03e2e-ba06-1347-de47-7d13ce6c370c",
+        "name": "Category 1 - 2",
+        "parent": "b5a0c5c2-47e4-4492-0bdf-36a9f6a47dfb"
+    },
+    {
+        "id": "83ded2f1-2933-5319-56fa-97d3b1043f30",
+        "name": "Category 1 - 3",
+        "parent": "b5a0c5c2-47e4-4492-0bdf-36a9f6a47dfb"
+    },
+    {
+        "id": "42d5607d-15ff-5435-6b6a-87f62c27814e",
+        "name": "Category 3 - 1",
+        "parent": "6922dd12-91dd-65ae-1ad3-c35a74d8a510"
+    },
+    {
+        "id": "8fc9ccf2-d030-acc6-e706-07202c938521",
+        "name": "Category 3 - 2",
+        "parent": "6922dd12-91dd-65ae-1ad3-c35a74d8a510"
+    },
+    {
+        "id": "f1733283-1d8f-b510-9a48-5f8e31805fa7",
+        "name": "Category 3 - 1 - 1",
+        "parent": "42d5607d-15ff-5435-6b6a-87f62c27814e"
+    }
+]

@@ -66,7 +66,7 @@ class CategoryItem extends Component {
                             name={this.props.name}
                             onEditClick={this.handleEditButtonClick}
                             onRemoveClick={this.props.onRemoveClick.bind(null, this.props.id)}
-                            onAddClick={this.props.onAddClick.bind(null, null, this.props.id)}
+                            onAddClick={this.props.onAddClick.bind(null, this.props.name + ' - 1', this.props.id)}
                         />
                     )}
                 {this.props.children && (
