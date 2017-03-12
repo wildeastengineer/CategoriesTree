@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import reducers from '../store/reducers';
-import { CategoriesTree } from './CategoriesTree';
+import CategoriesTree from './CategoriesTree';
 // Styles
 import './App.css';
 

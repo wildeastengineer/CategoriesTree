@@ -1,7 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { updateCategoriesList } from '../../store/actions';
-import { AddCategoryForm, CategoryList } from '../CategoriesTree';
+import AddCategoryForm from './AddCategoryForm/AddCategoryForm';
+import CategoriesList from './CategoriesList/CategoriesList';
+import './CategoriesTree.css';
 
 const propTypes = {
     updateCategoriesList: PropTypes.func.isRequired
@@ -14,9 +16,9 @@ class CategoriesTree extends Component {
 
     render() {
         return (
-            <div>
+            <div className='categories-tree'>
                 <AddCategoryForm/>
-                <CategoryList
+                <CategoriesList
                     categories={this.props.categories}
                 />
             </div>
@@ -27,57 +29,23 @@ class CategoriesTree extends Component {
 CategoriesTree.propTypes = propTypes;
 
 const mapStateToProps = (state) => {
-    //const categories = makeTree(state.categories.data);
-
-    const data = state.categories.data;
     const categories = [];
 
-    for (const categoryId in data) {
-        if (!data.hasOwnProperty(categoryId)) {
+    for (const id in state.categories.data) {
+        if (!state.categories.data.hasOwnProperty(id)) {
             continue;
         }
 
-        categories.push(data[categoryId]);
-    }
+        const category = state.categories.data[id];
 
-    console.warn('fix it');
+        if (category.parent === null) {
+            categories.push(category);
+        }
+    }
 
     return {
         categories
     };
-
-    function makeTree(data) {
-        const result = [];
-        const queue = [ null ];
-
-        while (queue.length) {
-            const currentParentId = queue.shift();
-            let currentParent;
-
-            if (currentParentId === null) {
-                currentParent = result;
-            } else {
-                currentParent = data[currentParentId];
-                currentParent.children = currentParent.children || [];
-                currentParent = currentParent.children;
-            }
-
-            for (const categoryId in data) {
-                if (!data.hasOwnProperty(categoryId)) {
-                    continue;
-                }
-
-                const category = data[categoryId];
-
-                if (category.parent === currentParentId) {
-                    currentParent.push(category);
-                    queue.push(category.id);
-                }
-            }
-        }
-
-        return result;
-    }
 };
 
 const mapDispatchToProps = (dispatch) => {

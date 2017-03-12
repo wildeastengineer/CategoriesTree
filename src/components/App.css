@@ -1,0 +1,35 @@
+.categories-app {
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.categories-app .categories-app-header {
+    background-color: #222;
+    box-sizing: border-box;
+    color: white;
+    flex-grow: 0;
+    height: 70px;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.categories-app .categories-app-header h1 {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.categories-app .categories-app-body {
+    align-items: stretch;
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    height: 100%;
+    margin: 20px auto;
+    padding: 20px;
+    width: 600px;
+}

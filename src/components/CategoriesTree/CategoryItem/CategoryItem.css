@@ -1,0 +1,34 @@
+.category-item {
+    padding: 2px 0 2px 2px;
+}
+
+.category-item .category-item-info {
+    box-sizing: border-box;
+    display: flex;
+    padding-left: 22px;
+    width: 100%;
+}
+
+.category-item .category-item-info .category-name {
+    line-height: 30px;
+}
+
+.category-item.expandable .category-item-info {
+    padding-left: 0;
+}
+
+.category-item .category-item-info > .category-item-expand {
+    border: none;
+}
+
+.category-item .category-item-info .category-item-display {
+    flex-grow: 1;
+}
+
+.category-item .category-item-info .category-item-edit {
+
+}
+
+.category-item .category-items-list {
+    width: 100%;
+}
