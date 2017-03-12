@@ -1,8 +1,9 @@
 import React from 'react';
-import { CategoryItem } from '../CategoriesTree';
+import { CategoryItem } from '../CategoryItem';
+import './CategoriesList.css';
 
-const CategoryList = (props) => (
-    <ul>
+const CategoriesList = (props) => (
+    <ul className='category-items-list'>
         {props.categories.map((category) => (
             <CategoryItem
                 key={category.id}
@@ -12,4 +13,4 @@ const CategoryList = (props) => (
     </ul>
 );
 
-export default CategoryList;
+export default CategoriesList;

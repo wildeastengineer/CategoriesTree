@@ -1,7 +1,7 @@
 class Repository {
     constructor() {
         this.protocol = 'http';
-        this.address = 'localhost:3002/api';
+        this.address = 'localhost:3001/api';
     }
 
     getUrl() {

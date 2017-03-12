@@ -1,7 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { updateCategoriesList } from '../../store/actions';
-import { AddCategoryForm, CategoryList } from '../CategoriesTree';
+import AddCategoryForm from './AddCategoryForm/AddCategoryForm';
+import CategoriesList from './CategoriesList/CategoriesList';
+import './CategoriesTree.css';
 
 const propTypes = {
     updateCategoriesList: PropTypes.func.isRequired
@@ -14,9 +16,9 @@ class CategoriesTree extends Component {
 
     render() {
         return (
-            <div>
+            <div className='categories-tree'>
                 <AddCategoryForm/>
-                <CategoryList
+                <CategoriesList
                     categories={this.props.categories}
                 />
             </div>

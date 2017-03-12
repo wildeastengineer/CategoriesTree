@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { addCategory } from '../../store/actions';
+import { addCategory } from '../../../store/actions';
+import { Button, FormControl, InputGroup } from 'react-bootstrap';
+import './AddCategoryForm.css';
 
 const propTypes = {
     onAddClick: PropTypes.func
@@ -34,17 +36,22 @@ class AddCategoryForm extends Component {
 
     render() {
         return (
-            <div>
-                <input
-                    type='text'
-                    value={this.state.name}
-                    onChange={this.handleNameChange}
-                />
-                <button
-                    onClick={this.handleAddClick}
-                >
-                    Add
-                </button>
+            <div className='add-category-form'>
+                <InputGroup>
+                    <FormControl
+                        type='text'
+                        value={this.state.name}
+                        placeholder='Add new category'
+                        onChange={this.handleNameChange}
+                    />
+                    <InputGroup.Button>
+                        <Button
+                            onClick={this.handleAddClick}
+                        >
+                            Add
+                        </Button>
+                    </InputGroup.Button>
+                </InputGroup>
             </div>
         );
     }
