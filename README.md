@@ -18,3 +18,9 @@
 Убедиться, что при изменении и сохранении имени 1 категории реконсалиэйшн процесс идет только для неё одной (все дерево НЕ перерисовывается)
 
 ![Dev tools](https://github.com/wildeastengineer/CategoriesTree/raw/master/etc/2017-03-06_1653.png)
+
+## Run
+
+process #1: `$ node backend/app.js`
+
+process #2: `$ npm start`
