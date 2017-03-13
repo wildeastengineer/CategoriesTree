@@ -1,0 +1,20 @@
+.category-item-display {
+    display: flex;
+}
+
+.category-item-display .category-name-wrapper {
+    flex-grow: 1;
+}
+
+.category-item-display button {
+    border: none;
+    margin-left: 5px;
+}
+
+.category-item-display button.edit-category-button {
+    display: none;
+}
+
+.category-item-display:hover button.edit-category-button  {
+    display: inline-block;
+}
